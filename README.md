@@ -1,10 +1,7 @@
 # Comea
->> Utilities for simplified observables :eyes:
+> Utilities for simplified observables :eyes:
 
 # Usage
-```bash
-npm install comea
-```
 ```js
 import { /* functions */ } from 'comea'
 ```
@@ -21,7 +18,7 @@ const observable = next => next(130)
 const number$ = next => [1, 2, 3].forEach(next)
 ```
 
-The next example build a timer observable and a logger observer with these concepts:
+The next example will build a timer observable and a logger observer with these concepts:
 ```js
 const timer = next => {
   let i = 0
