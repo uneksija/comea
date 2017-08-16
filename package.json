@@ -1,0 +1,24 @@
+{
+  "name": "comea",
+  "version": "0.0.1",
+  "description": "Utilities for simplified observables :eyes:",
+  "main": "index.js",
+  "scripts": {
+    "test": "false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Huijari/comea.git"
+  },
+  "keywords": [
+    "reactive",
+    "observer",
+    "observables"
+  ],
+  "author": "Alexandre Cesar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Huijari/comea/issues"
+  },
+  "homepage": "https://github.com/Huijari/comea#readme"
+}
