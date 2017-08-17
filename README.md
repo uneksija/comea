@@ -1,12 +1,12 @@
 # Comea
 > Utilities for simplified observables :eyes:
 
-# Usage
+## Usage
 ```js
 import { /* functions */ } from 'comea'
 ```
 
-# Definitions
+## Definitions
 **Observer:** A function that receives some data over time and do something with it.
 ```js
 const observer = data => doSomething(data)
@@ -40,9 +40,9 @@ timer(logger)
 // data: 2
 ```
 
-# API
+## API
 
-# Motivation
+## Motivation
 
-# License
+## License
 MIT
