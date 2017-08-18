@@ -41,38 +41,53 @@ timer(logger)
 ```
 
 ## API
+### just
 ```hs
 just :: a -> Observable
 ```
+Takes a value and returns a observable that emits just that value.
 
+### from
 ```hs
 from :: [a] -> Observable
 ```
+Takes a list of values and returns a observable that emits each value at a time.
 
+### periodic
 ```hs
 periodic :: a -> Observable
 ```
+Takes a interval in milliseconds and returns a observable that emits `undefined` at that interval.
 
+### map
 ```hs
 map :: Observable -> (a -> b) -> Observable
 ```
+Takes a observable and a function, returns a observable that apply the function to the values of the base observable and emits the results.
 
+### constant
 ```hs
 constant :: Observable -> a -> Observable
 ```
+Takes a observable and a constant, returns a observable that emits the constant each time the base observable emits a value.
 
+### filter
 ```hs
 filter :: Observable -> (a -> Bool) -> Observable
 ```
+Takes a observable and a predicate, returns a observable that emits only the values from the base observable for wich the predicate evaluates to true.
 
+### scan
 ```hs
 scan :: Observable -> (a -> b -> a) -> a -> Observable
 ```
 
+### merge
 ```hs
 merge :: ...Observable -> Observable
 ```
 
+### combine
 ```hs
 combine :: (a -> b) -> ...Observable -> Observable
 ```
