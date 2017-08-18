@@ -41,6 +41,41 @@ timer(logger)
 ```
 
 ## API
+```hs
+just :: a -> Observable
+```
+
+```hs
+from :: [a] -> Observable
+```
+
+```hs
+periodic :: a -> Observable
+```
+
+```hs
+map :: Observable -> (a -> b) -> Observable
+```
+
+```hs
+constant :: Observable -> a -> Observable
+```
+
+```hs
+filter :: Observable -> (a -> Bool) -> Observable
+```
+
+```hs
+scan :: Observable -> (a -> b -> a) -> a -> Observable
+```
+
+```hs
+merge :: ...Observable -> Observable
+```
+
+```hs
+combine :: (a -> b) -> ...Observable -> Observable
+```
 
 ## Motivation
 
