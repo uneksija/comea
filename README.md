@@ -80,24 +80,24 @@ Takes an observable and a predicate, returns an observable that emits only the v
 ### scan
 ```hs
 scan :: Observable -> (a -> b -> a) -> a -> Observable
+```
 
 Takes an observable, a reducer and an initial value, returns an observable that emits the partial applications of the reducer on the values from the base observable. Where the reducer is a function that takes the current state and a value, then returns the next state.
-```
 
 ### merge
 ```hs
 merge :: ...Observable -> Observable
+```
 
 Takes some observables and returns an observable that emits events from all the base observables.
-```
 
 ### combine
 ```hs
 combine :: ([a] -> b) -> ...Observable -> Observable
+```
 
 Takes a function and some observables, returns an observable that emits the application of the function to the values of the base observables. Where the function receives the values in an array on the same order as you passed the observables.
 
-```
 
 ## Motivation
 
