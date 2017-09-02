@@ -22,6 +22,17 @@ const scan = (base, reducer, initial) => next => {
 
 const merge = (...observables) => next => observables.forEach(base => base(next))
 
+const combine = (combiner, ...observables) => next => {
+  let state = Array(observables.length)
+
+  observables.forEach((base, index) => base(value => {
+    state[index] = value
+
+    if(Object.keys(state).length === state.length)
+      next(combiner(state))
+  }))
+}
+
 export {
   constant,
   filter,
@@ -31,4 +42,5 @@ export {
   periodic,
   scan,
   merge,
+  combine
 }
