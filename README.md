@@ -93,8 +93,7 @@ Takes some observables and returns an observable that emits events from all the 
 ```hs
 combine :: ([a] -> b) -> ...Observable -> Observable
 ```
-Takes a function and some observables, returns an observable that emits the application of the function to the values of the base observables. Where the function receives the values in an array on the same order as the observables were passed.
-
+Takes a combiner and some observables, returns an observable that emits the application of the combiner to the values of the base observables. Where the combiner is a function that receives the values in an array on the same order as the observables were passed.
 
 ## Motivation
 
