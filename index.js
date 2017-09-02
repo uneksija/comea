@@ -20,6 +20,8 @@ const scan = (base, reducer, initial) => next => {
   })
 }
 
+const merge = (...observables) => next => observables.forEach(base => base(next))
+
 export {
   constant,
   filter,
@@ -28,4 +30,5 @@ export {
   map,
   periodic,
   scan,
+  merge,
 }
