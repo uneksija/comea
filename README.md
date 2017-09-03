@@ -7,18 +7,18 @@ import { /* functions */ } from 'comea'
 ```
 
 ## Definitions
-**Observer:** A function that receives some data over time and do something with it.
+**Observer:** A function that receives some data over time and does something with it.
 ```js
 const observer = data => doSomething(data)
 ```
 
-**Observable:** A function that receives a observer and call it with data.
+**Observable:** A function that receives an observer and calls it with data.
 ```js
 const observable = next => next(130)
 const number$ = next => [1, 2, 3].forEach(next)
 ```
 
-The next example will build a timer observable and a logger observer with these concepts:
+The next example will build a timer observable and a logger observer within these concepts:
 ```js
 const timer = next => {
   let i = 0
@@ -31,7 +31,7 @@ const timer = next => {
 const logger = data => console.log('data:', data)
 ```
 
-To bind the two we call the observable passing the observer as a parameter:
+To bind them we call the observable passing the observer as a parameter:
 ```js
 timer(logger)
 
@@ -63,7 +63,7 @@ Takes an interval in milliseconds and returns an observable that emits `undefine
 ```hs
 map :: Observable -> (a -> b) -> Observable
 ```
-Takes an observable and a function, returns an observable that apply the function to the values of the base observable and emits the results.
+Takes an observable and a function, returns an observable that applies the function to the values of the base observable and emits the results.
 
 ### constant
 ```hs
@@ -75,29 +75,25 @@ Takes an observable and a constant, returns an observable that emits the constan
 ```hs
 filter :: Observable -> (a -> Bool) -> Observable
 ```
-Takes an observable and a predicate, returns an observable that emits only the values from the base observable for wich the predicate evaluates to true.
+Takes an observable and a predicate, returns an observable that emits only the values from the base observable for which the predicate evaluates to true.
 
 ### scan
 ```hs
 scan :: Observable -> (a -> b -> a) -> a -> Observable
 ```
-
 Takes an observable, a reducer and an initial value, returns an observable that emits the partial applications of the reducer on the values from the base observable. Where the reducer is a function that takes the current state and a value, then returns the next state.
 
 ### merge
 ```hs
 merge :: ...Observable -> Observable
 ```
-
 Takes some observables and returns an observable that emits events from all the base observables.
 
 ### combine
 ```hs
 combine :: ([a] -> b) -> ...Observable -> Observable
 ```
-
-Takes a function and some observables, returns an observable that emits the application of the function to the values of the base observables. Where the function receives the values in an array on the same order as you passed the observables.
-
+Takes a combiner and some observables, returns an observable that emits the application of the combiner to the values of the base observables. Where the combiner is a function that receives the values in an array on the same order as the observables were passed.
 
 ## Motivation
 
