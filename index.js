@@ -23,7 +23,7 @@ const map = (base, mapper) => next =>
 
 const merge = (...observables) => next => observables.forEach(base => base(next))
 
-const periodic = interval => next => setInverval(next, interval)
+const periodic = interval => next => setInterval(next, interval)
 
 const scan = (base, reducer, initial) => next => {
   let state = initial
