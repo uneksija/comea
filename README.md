@@ -1,24 +1,35 @@
-# Comea
-> Utilities for simplified observables :eyes:
+![comea logo](logo.png)
+
+> Utilities for simplified observables
 
 ## Usage
+
 ```js
 import { /* functions */ } from 'comea'
 ```
 
+
+
 ## Definitions
+
 **Observer:** A function that receives some data over time and does something with it.
 ```js
 const observer = data => doSomething(data)
 ```
 
+
+
 **Observable:** A function that receives an observer and calls it with data.
+
 ```js
 const observable = next => next(130)
 const number$ = next => [1, 2, 3].forEach(next)
 ```
 
+
+
 The next example will build a timer observable and a logger observer within these concepts:
+
 ```js
 const timer = next => {
   let i = 0
@@ -40,62 +51,94 @@ timer(logger)
 // data: 2
 ```
 
+
+
 ## API
+
 ### just
 ```hs
 just :: a -> Observable
 ```
 Takes a value and returns an observable that emits just that value.
 
+
+
 ### from
+
 ```hs
 from :: [a] -> Observable
 ```
 Takes a list of values and returns an observable that emits each value at a time.
 
+
+
 ### periodic
+
 ```hs
 periodic :: a -> Observable
 ```
 Takes an interval in milliseconds and returns an observable that emits `undefined` at that interval.
 
+
+
 ### map
+
 ```hs
 map :: Observable -> (a -> b) -> Observable
 ```
 Takes an observable and a function, returns an observable that applies the function to the values of the base observable and emits the results.
 
+
+
 ### constant
+
 ```hs
 constant :: Observable -> a -> Observable
 ```
 Takes an observable and a constant, returns an observable that emits the constant each time the base observable emits a value.
 
+
+
 ### filter
+
 ```hs
 filter :: Observable -> (a -> Bool) -> Observable
 ```
 Takes an observable and a predicate, returns an observable that emits only the values from the base observable for which the predicate evaluates to true.
 
+
+
 ### scan
+
 ```hs
 scan :: Observable -> (a -> b -> a) -> a -> Observable
 ```
 Takes an observable, a reducer and an initial value, returns an observable that emits the partial applications of the reducer on the values from the base observable. Where the reducer is a function that takes the current state and a value, then returns the next state.
 
+
+
 ### merge
+
 ```hs
 merge :: ...Observable -> Observable
 ```
 Takes some observables and returns an observable that emits events from all the base observables.
 
+
+
 ### combine
+
 ```hs
 combine :: ([a] -> b) -> ...Observable -> Observable
 ```
 Takes a combiner and some observables, returns an observable that emits the application of the combiner to the values of the base observables. Where the combiner is a function that receives the values in an array on the same order as the observables were passed.
 
+
+
 ## Motivation
 
+
+
 ## License
+
 MIT
