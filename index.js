@@ -1,3 +1,14 @@
+const combine = (combiner, ...observables) => next => {
+  let state = Array(observables.length)
+
+  observables.forEach((base, index) => base(value => {
+    state[index] = value
+
+    if(Object.keys(state).length === state.length)
+      next(combiner(state))
+  }))
+}
+
 const constant = (base, value) => map(base, () => value)
 
 const filter = (base, predicate) => next =>
@@ -10,6 +21,8 @@ const just = value => next => next(value)
 const map = (base, mapper) => next =>
   base(value => next(mapper(value)))
 
+const merge = (...observables) => next => observables.forEach(base => base(next))
+
 const periodic = interval => next => setInverval(next, interval)
 
 const scan = (base, reducer, initial) => next => {
@@ -20,27 +33,14 @@ const scan = (base, reducer, initial) => next => {
   })
 }
 
-const merge = (...observables) => next => observables.forEach(base => base(next))
-
-const combine = (combiner, ...observables) => next => {
-  let state = Array(observables.length)
-
-  observables.forEach((base, index) => base(value => {
-    state[index] = value
-
-    if(Object.keys(state).length === state.length)
-      next(combiner(state))
-  }))
-}
-
 export {
+  combine,
   constant,
   filter,
   from,
   just,
   map,
+  merge,
   periodic,
   scan,
-  merge,
-  combine
 }
