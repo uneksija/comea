@@ -14,6 +14,9 @@ const constant = (base, value) => map(base, () => value)
 const filter = (base, predicate) => next =>
   base(value => predicate(value) && next(value))
 
+const flatMap = (base, mapper) => next =>
+  base(value => mapper(value)(next))
+
 const from = values => next => values.forEach(next)
 
 const just = value => next => next(value)
