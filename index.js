@@ -24,7 +24,8 @@ const just = value => next => next(value)
 const map = (base, mapper) => next =>
   base(value => next(mapper(value)))
 
-const merge = (...observables) => next => observables.forEach(base => base(next))
+const merge = (...observables) => next =>
+  observables.forEach(base => base(next))
 
 const periodic = interval => next => setInterval(next, interval)
 
