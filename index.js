@@ -5,7 +5,7 @@ const combine = (combiner, ...observables) => next => {
     state[index] = value
 
     if(Object.keys(state).length === state.length)
-      next(combiner(state))
+      next(combiner(...state))
   }))
 }
 
@@ -14,6 +14,9 @@ const constant = (base, value) => map(base, () => value)
 const filter = (base, predicate) => next =>
   base(value => predicate(value) && next(value))
 
+const flatMap = (base, mapper) => next =>
+  base(value => mapper(value)(next))
+
 const from = values => next => values.forEach(next)
 
 const just = value => next => next(value)
@@ -21,7 +24,8 @@ const just = value => next => next(value)
 const map = (base, mapper) => next =>
   base(value => next(mapper(value)))
 
-const merge = (...observables) => next => observables.forEach(base => base(next))
+const merge = (...observables) => next =>
+  observables.forEach(base => base(next))
 
 const periodic = interval => next => setInterval(next, interval)
 
@@ -37,6 +41,7 @@ export {
   combine,
   constant,
   filter,
+  flatMap,
   from,
   just,
   map,
