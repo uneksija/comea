@@ -5,7 +5,7 @@ const combine = (combiner, ...observables) => next => {
     state[index] = value
 
     if(Object.keys(state).length === state.length)
-      next(combiner(state))
+      next(combiner(...state))
   }))
 }
 
