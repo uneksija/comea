@@ -41,6 +41,7 @@ export {
   combine,
   constant,
   filter,
+  flatMap,
   from,
   just,
   map,
