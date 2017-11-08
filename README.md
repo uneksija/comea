@@ -118,6 +118,12 @@ endWhen :: Observable -> Observable -> Observable
 ```
 Takes two observables, a base and a limiter, and returns an observable that emits events from the base observable until the limiter observable emits an event.
 
+### zip
+```hs
+zip :: (...a -> b) -> ...Observable -> Observable
+```
+Takes a merger and some observables and returns an observable that emits the application of the merger to the values of the base observables. Where the merger is a function that receives the values in the same order as the observables were passed. The first emission will have the first events from all observables, and so on.
+
 ## Motivation
 
 ## License
