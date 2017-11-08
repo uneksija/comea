@@ -106,6 +106,12 @@ combine :: (...a -> b) -> ...Observable -> Observable
 ```
 Takes a combiner and some observables, returns an observable that emits the application of the combiner to the values of the base observables. Where the combiner is a function that receives the values in the same order as the observables were passed.
 
+### debounce
+```hs
+debounce :: Observable -> a -> Observable
+```
+Takes an observable and an interval in milliseconds and returns an observable that emits events from the base observable with at least that much interval between emissions, ignoring events emitted during this interval.
+
 ## Motivation
 
 ## License
