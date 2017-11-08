@@ -59,7 +59,7 @@ const scan = (base, reducer, initial) => next => {
 const zip = (merger, ...observables) => next => {
   const stock = Array.from({length} = observables, _ => []),
     checkStock = _ => stock.every(list => list.length),
-    emit = _ => next(merger(stock.map(list => list.shift())))
+    emit = _ => next(merger(...stock.map(list => list.shift())))
 
   observables.forEach((base, index) => base(value => {
     stock[index].push(value)
