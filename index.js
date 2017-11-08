@@ -11,6 +11,17 @@ const combine = (combiner, ...observables) => next => {
 
 const constant = (base, value) => map(base, () => value)
 
+const debounce = (base, interval) => next => {
+  let stamp = Date.now() - interval;
+  base(value => {
+    const now = Date.now()
+    if(now >= stamp + interval) {
+      next(value)
+      stamp = now
+    }
+  })
+}
+
 const filter = (base, predicate) => next =>
   base(value => predicate(value) && next(value))
 
@@ -41,6 +52,7 @@ const scan = (base, reducer, initial) => next => {
 export {
   combine,
   constant,
+  debounce,
   filter,
   flatMap,
   from,
