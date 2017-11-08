@@ -22,6 +22,9 @@ const debounce = (base, interval) => next => {
   })
 }
 
+const delay = (base, interval) => next =>
+  base(value => setTimeout(() => next(value), interval))
+
 const endWhen = (base, limiter) => next => {
   let emit = true
 
@@ -75,6 +78,7 @@ export {
   combine,
   constant,
   debounce,
+  delay,
   endWhen,
   filter,
   flatMap,
