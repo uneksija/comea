@@ -22,6 +22,13 @@ const debounce = (base, interval) => next => {
   })
 }
 
+const endWhen = (base, limiter) => next => {
+  let emit = true
+
+  limiter(_ => emit = false)
+  base(value => emit && next(value))
+}
+
 const filter = (base, predicate) => next =>
   base(value => predicate(value) && next(value))
 
@@ -53,6 +60,7 @@ export {
   combine,
   constant,
   debounce,
+  endWhen,
   filter,
   flatMap,
   from,
