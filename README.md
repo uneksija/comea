@@ -112,6 +112,12 @@ debounce :: Observable -> a -> Observable
 ```
 Takes an observable and an interval in milliseconds and returns an observable that emits events from the base observable with at least that much interval between emissions, ignoring events emitted during this interval.
 
+### endWhen
+```hs
+endWhen :: Observable -> Observable -> Observable
+```
+Takes two observables, a base and a limiter, and returns an observable that emits events from the base observable until the limiter observable emits an event.
+
 ## Motivation
 
 ## License
