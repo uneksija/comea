@@ -130,6 +130,12 @@ take :: Observable -> a -> Observable
 ```
 Takes an observable and an ammount, returns an observable that emits that many events from the base observable.
 
+### delay
+```hs
+delay :: Observable -> a -> Observable
+```
+Takes an observable and an interval in milliseconds and returns an observable that emits events from the base observable delayed by that much time.
+
 ## Motivation
 
 ## License
