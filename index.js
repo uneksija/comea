@@ -56,6 +56,9 @@ const scan = (base, reducer, initial) => next => {
   })
 }
 
+const take = (base, ammount) => next =>
+  base(value => ammount-- > 0 && next(value))
+
 const zip = (merger, ...observables) => next => {
   const stock = Array.from({length} = observables, () => []),
     checkStock = () => stock.every(list => list.length),
@@ -81,5 +84,6 @@ export {
   merge,
   periodic,
   scan,
+  take,
   zip,
 }
