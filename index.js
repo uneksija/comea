@@ -25,7 +25,7 @@ const debounce = (base, interval) => next => {
 const endWhen = (base, limiter) => next => {
   let emit = true
 
-  limiter(_ => emit = false)
+  limiter(() => emit = false)
   base(value => emit && next(value))
 }
 
@@ -57,9 +57,9 @@ const scan = (base, reducer, initial) => next => {
 }
 
 const zip = (merger, ...observables) => next => {
-  const stock = Array.from({length} = observables, _ => []),
-    checkStock = _ => stock.every(list => list.length),
-    emit = _ => next(merger(...stock.map(list => list.shift())))
+  const stock = Array.from({length} = observables, () => []),
+    checkStock = () => stock.every(list => list.length),
+    emit = () => next(merger(...stock.map(list => list.shift())))
 
   observables.forEach((base, index) => base(value => {
     stock[index].push(value)
