@@ -82,6 +82,12 @@ constant :: Observable -> a -> Observable
 ```
 Takes an observable and a constant, returns an observable that emits the constant each time the base observable emits a value.
 
+### take
+```hs
+take :: Observable -> a -> Observable
+```
+Takes an observable and an ammount, returns an observable that emits that many events from the base observable.
+
 ### filter
 ```hs
 filter :: Observable -> (a -> Bool) -> Observable
@@ -105,6 +111,30 @@ Takes some observables and returns an observable that emits events from all the 
 combine :: (...a -> b) -> ...Observable -> Observable
 ```
 Takes a combiner and some observables, returns an observable that emits the application of the combiner to the values of the base observables. Where the combiner is a function that receives the values in the same order as the observables were passed.
+
+### zip
+```hs
+zip :: (...a -> b) -> ...Observable -> Observable
+```
+Takes a merger and some observables and returns an observable that emits the application of the merger to the values of the base observables. Where the merger is a function that receives the values in the same order as the observables were passed. The first emission will have the first events from all observables, and so on.
+
+### debounce
+```hs
+debounce :: Observable -> a -> Observable
+```
+Takes an observable and an interval in milliseconds and returns an observable that emits events from the base observable with at least that much interval between emissions, ignoring events emitted during this interval.
+
+### delay
+```hs
+delay :: Observable -> a -> Observable
+```
+Takes an observable and an interval in milliseconds and returns an observable that emits events from the base observable delayed by that much time.
+
+### endWhen
+```hs
+endWhen :: Observable -> Observable -> Observable
+```
+Takes two observables, a base and a limiter, and returns an observable that emits events from the base observable until the limiter observable emits an event.
 
 ## Motivation
 
