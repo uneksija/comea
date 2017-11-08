@@ -31,6 +31,7 @@ const periodic = interval => next => setInterval(next, interval)
 
 const scan = (base, reducer, initial) => next => {
   let state = initial
+  next(state)
   base(value => {
     state = reducer(state, value)
     next(state)
