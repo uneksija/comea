@@ -124,6 +124,12 @@ zip :: (...a -> b) -> ...Observable -> Observable
 ```
 Takes a merger and some observables and returns an observable that emits the application of the merger to the values of the base observables. Where the merger is a function that receives the values in the same order as the observables were passed. The first emission will have the first events from all observables, and so on.
 
+### take
+```hs
+take :: Observable -> a -> Observable
+```
+Takes an observable and an ammount, returns an observable that emits that many events from the base observable.
+
 ## Motivation
 
 ## License
