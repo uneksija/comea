@@ -11,6 +11,27 @@ const combine = (combiner, ...observables) => next => {
 
 const constant = (base, value) => map(base, () => value)
 
+const debounce = (base, interval) => next => {
+  let stamp = Date.now() - interval;
+  base(value => {
+    const now = Date.now()
+    if(now >= stamp + interval) {
+      next(value)
+      stamp = now
+    }
+  })
+}
+
+const delay = (base, interval) => next =>
+  base(value => setTimeout(() => next(value), interval))
+
+const endWhen = (base, limiter) => next => {
+  let emit = true
+
+  limiter(() => emit = false)
+  base(value => emit && next(value))
+}
+
 const filter = (base, predicate) => next =>
   base(value => predicate(value) && next(value))
 
@@ -38,9 +59,27 @@ const scan = (base, reducer, initial) => next => {
   })
 }
 
+const take = (base, ammount) => next =>
+  base(value => ammount-- > 0 && next(value))
+
+const zip = (merger, ...observables) => next => {
+  const stock = Array.from({length} = observables, () => []),
+    checkStock = () => stock.every(list => list.length),
+    emit = () => next(merger(...stock.map(list => list.shift())))
+
+  observables.forEach((base, index) => base(value => {
+    stock[index].push(value)
+
+    checkStock() && emit()
+  }))
+}
+
 export {
   combine,
   constant,
+  debounce,
+  delay,
+  endWhen,
   filter,
   flatMap,
   from,
@@ -49,4 +88,6 @@ export {
   merge,
   periodic,
   scan,
+  take,
+  zip,
 }
