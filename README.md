@@ -5,6 +5,11 @@
 > Utilities for simplified observables
 
 ## Usage
+Install:
+```sh
+npm install @uneksija/comea
+```
+Import:
 ```js
 import { /* functions */ } from 'comea'
 ```
