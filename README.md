@@ -1,9 +1,10 @@
 <p align="center">
   <img src="logo.png" alt="comea logo">
-  [![version](https://img.shields.io/npm/v/@uneksija/comea.svg?style=flat)](https://npmjs.com/@uneksija/comea)
-  [![size](https://img.shields.io/github/size/uneksija/comea/index.js.svg?style=flat)]()
-  [![license](https://img.shields.io/github/license/uneksija/comea.svg?style=flat)]()
 </p>
+
+[![version](https://img.shields.io/npm/v/@uneksija/comea.svg?style=flat)](https://npmjs.com/@uneksija/comea)
+[![size](https://img.shields.io/github/size/uneksija/comea/index.js.svg?style=flat)]()
+[![license](https://img.shields.io/github/license/uneksija/comea.svg?style=flat)]()
 
 > Utilities for simplified observables
 
