@@ -49,6 +49,12 @@ const merge = (...observables) => next =>
 
 const periodic = interval => next => setInterval(next, interval)
 
+const sample = (base, trigger) => next => {
+  let lastValue
+  base(value => (lastValue = value))
+  trigger(() => next(lastValue))
+}
+
 const scan = (base, reducer, initial) => next => {
   let state = initial
   next(state)
@@ -88,6 +94,7 @@ export {
   map,
   merge,
   periodic,
+  sample,
   scan,
   take,
   zip
