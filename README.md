@@ -128,7 +128,7 @@ zip: (merger: (...values: any) => any, ...observables: Observable[]) => Observab
 Takes a merger and some observables and returns an observable that emits the application of the merger to the values of the base observables. Where the merger is a function that receives the values in the same order as the observables were passed. The first emission will have the first events from all observables, and so on.
 
 ### sample
-```
+```ts
 sample: (base: Observable, trigger: Observable) => Observable
 ```
 Takes two observables, a base and a trigger, the resulting observable will emit the last event from the base each time it receives an event from the trigger.
